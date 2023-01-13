@@ -7,4 +7,5 @@ public class ScoreParams
     public uint MaxCombo { get; set; }
     public double Accuracy { get; set; }
     public uint MissCount { get; set; }
+    public uint PassedObjects { get; set; }
 }

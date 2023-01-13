@@ -5,7 +5,7 @@ namespace Akatsuki.PP;
 public class Calculator
 {
     [DllImport("akatsuki_pp_ffi.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "calculate_score")]
-    public static extern CalculateResult calculate_score(string beatmapPath, uint mode, uint mods, uint maxCombo, double accuracy, uint missCount);
+    public static extern CalculateResult calculate_score(string beatmapPath, uint mode, uint mods, uint maxCombo, double accuracy, uint missCount, Optionu32 passedObjects);
 
     private readonly string _mapPath;
     public Calculator(string mapPath)
@@ -21,7 +21,8 @@ public class Calculator
             scoreParams.Mods,
             scoreParams.MaxCombo,
             scoreParams.Accuracy,
-            scoreParams.MissCount
+            scoreParams.MissCount,
+            Optionu32.FromNullable(scoreParams.PassedObjects)
         );
 
         return result;
